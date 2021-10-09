@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Grid Editor</title>
+	<script type="text/javascript" defer>
+		x = {{x}};
+		y = {{y}};
+		lang = "{{lang}}";
+		var tab = l => {
+			cx = parseInt(l.substr(0, 2));
+			cy = parseInt(l.substr(2, 4));
+			cx++;
+			if (cx == x) {
+				cx = 0;
+				cy++;
+			}
+			result = ""
+			if (String(cx).length == 1)
+				result += 0;
+			result += String(cx)
+			if (String(cy).length == 1)
+				result += 0;
+			result += String(cy);
+			setTimeout(()=>{document.getElementById(result).children[0].focus()}, 1);
+		}
+		var finish = (x, y, lang) => {
+			table = ""
+			for (j = 0; j < y; j++)
+				for (i = 0; i < x; i++) {
+					result = ""
+					if (String(i).length == 1)
+						result += 0;
+					result += String(i)
+					if (String(j).length == 1)
+						result += 0;
+					result += String(j)
+					table += document.getElementById(result).children[0].value
+				}
+			location = '/getwords?x=' + x + '&y=' + y + '&lang=' + lang + '&table=' + table;
+		}
+	</script>
+</head>
+<body>
+	<h1>Grid Editor</h1>
+	{{table}}
+	<br /><br />
+	<button onclick="finish({{x}}, {{y}}, '{{lang}}')">Finish</button>
+</body>
+</html>

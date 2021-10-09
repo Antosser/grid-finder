@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Crossword Solver</title>
+	<link rel="icon" type="image/png" href="/favicon.ico" sizes="96x96">
+	<script type="text/javascript" defer="">
+		var finish = () => {
+			x = document.getElementById("sizex").value
+			y = document.getElementById("sizey").value
+			lang = document.getElementById("lang").value
+			location = "/grid?x=" + x + "&y=" + y + "&lang=" + lang
+		}
+	</script>
+</head>
+<body>
+	<h1>Antosser's Crossword Solver</h1>
+	<h2>Please select the size of the grid:</h2>
+	X: <input type="number" id="sizex" />
+	<br />
+	Y: <input type="number" id="sizey" />
+	<br />
+	<h2>Please select the language</h2>
+	Language: <select id="lang">
+		<option value="english">English</option>
+		<option value="german">German</option>
+		<option value="russian">Russian</option>
+	</select>
+	<br /><br />
+	<button onclick="finish()">Continue</button>
+</body>
+</html>
